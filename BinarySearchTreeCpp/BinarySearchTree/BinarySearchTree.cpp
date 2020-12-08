@@ -163,7 +163,7 @@ BstNode* Delete(BstNode* root, int data)
     if (root == NULL) return root;
     else if (data < root->data) root->Left = Delete(root->Left, data);
     else if (data > root->data) root->Right = Delete(root->Right, data);
-    else // Wohoo... I found you, Get ready to be deleted
+    else // Found
     {
         // Case 1: No child
         if (root->Left == NULL && root->Right == NULL) {
