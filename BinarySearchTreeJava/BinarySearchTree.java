@@ -8,98 +8,96 @@ public class BinarySearchTree {
     }
 
     void Insert(int data) {
-        root = insert(root, data);
+        root = Insert(root, data);
     }
 
-    BstNode insert(BstNode root, int data) {
+    BstNode Insert(BstNode root, int data) {
 
         if (root == null) {
             root = new BstNode(data);
         } else if (data < root.data)
-            root.Left = insert(root.Left, data);
+            root.Left = Insert(root.Left, data);
         else if (data > root.data)
-            root.Right = insert(root.Right, data);
+            root.Right = Insert(root.Right, data);
 
         return root;
     }
 
     void InOrder() {
-        inorder(root);
+        InOrder(root);
     }
 
-    void inorder(BstNode root) {
+    void InOrder(BstNode root) {
         if (root != null) {
-            inorder(root.Left);
+            InOrder(root.Left);
             System.out.print(root.data + " ");
-            inorder(root.Right);
+            InOrder(root.Right);
         }
     }
 
     void PreOrder() {
-        preorder(root);
+        PreOrder(root);
     }
 
-    void preorder(BstNode root) {
+    void PreOrder(BstNode root) {
         if (root == null)
             return;
         System.out.print(root.data + " ");
-        preorder(root.Left);
-        preorder(root.Right);
+        PreOrder(root.Left);
+        PreOrder(root.Right);
     }
 
     void PostOrder() {
-        postorder(root);
+        PostOrder(root);
     }
 
-    void postorder(BstNode root) {
+    void PostOrder(BstNode root) {
         if (root == null)
             return;
-        postorder(root.Left);
-        postorder(root.Right);
+        PostOrder(root.Left);
+        PostOrder(root.Right);
         System.out.print(root.data + " ");
     }
 
     int Height() {
-        return height(root);
+        return Height(root);
     }
 
-    int height(BstNode root) {
+    int Height(BstNode root) {
         if (root == null)
             return -1;
-        int leftHeight = height(root.Left);
-        int rightHeight = height(root.Right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        return Math.max(Height(root.Left), Height(root.Right)) + 1;
     }
 
     boolean Search(int data) {
-        return search(root, data);
+        return Search(root, data);
     }
 
-    boolean search(BstNode root, int data) {
+    boolean Search(BstNode root, int data) {
         boolean result;
         if (root == null) {
             result = false;
         } else if (root.data == data) {
             result = true;
         } else if (data <= root.data) {
-            result = search(root.Left, data);
+            result = Search(root.Left, data);
         } else {
-            result = search(root.Right, data);
+            result = Search(root.Right, data);
         }
         return result;
     }
 
     void Delete(int data) {
-        delete(root, data);
+        Delete(root, data);
     }
 
-    BstNode delete(BstNode root, int data) {
+    BstNode Delete(BstNode root, int data) {
         if (root == null)
             return root;
         else if (data < root.data)
-            root.Left = delete(root.Left, data);
+            root.Left = Delete(root.Left, data);
         else if (data > root.data)
-            root.Right = delete(root.Right, data);
+            root.Right = Delete(root.Right, data);
         else // found
         {
             // Case 1: No child
@@ -117,7 +115,7 @@ public class BinarySearchTree {
             else {
                 BstNode temp = FindMin(root.Right);
                 root.data = temp.data;
-                root.Right = delete(root.Right, temp.data);
+                root.Right = Delete(root.Right, temp.data);
             }
         }
         return root;

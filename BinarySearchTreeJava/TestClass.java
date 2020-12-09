@@ -13,23 +13,32 @@ public class TestClass {
         tree.Insert(60);
         tree.Insert(80);
 
-        tree.Delete(20);
+        tree.Delete(10);
+
+        // print preorder traversal of the BST
+        System.out.print("\nPreOrder: ");
+        tree.PreOrder();
 
         // print inorder traversal of the BST
-        System.out.print("\nInOrder: ");
+        System.out.print("\n\nInOrder: ");
         tree.InOrder();
-        System.out.print("\n\nPreOrder: ");
-        tree.PreOrder();
+
+        // print postorder traversal of the BST
         System.out.print("\n\nPostOrder: ");
         tree.PostOrder();
+
         System.out.println("\n\nHeight of the tree is: " + tree.Height());
-        System.out.print("Give node to find: ");
+
+        System.out.print("\nGive the node value to find: ");
+
         Scanner input = new Scanner(System.in);
         int data = input.nextInt();
+        input.close();
+
         if (tree.Search(data)) {
-            System.out.println(data + " is found in the tree");
+            System.out.println(data + " is found in the tree.");
         } else {
-            System.out.println(data + " does not exists");
+            System.out.println(data + " does not exists in the tree.");
         }
     }
 }

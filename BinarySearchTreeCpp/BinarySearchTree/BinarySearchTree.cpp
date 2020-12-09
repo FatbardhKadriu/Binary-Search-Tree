@@ -22,45 +22,28 @@ int main()
 {
     /*
       Creating an example tree
-                15
-               / \
-              10  20
-             / \   \
-            8   12   25
+                 15
+               /    \           |
+              10     20         |
+             / \       \        | height = 3
+            8   11      25      |
+           /     \      / \     |
+          7      14    22  26   |
     */
 
     BstNode* root = NULL; // Creating an empty tree
 
+    // Insert values 
     root = Insert(root, 15);
     root = Insert(root, 10);
     root = Insert(root, 20);
     root = Insert(root, 25);
     root = Insert(root, 8);
-    root = Insert(root, 12);
-
-
-    // Insert values 
-    /*
-    root = Insert(root, 1);
-    root = Insert(root, 2);
-    root = Insert(root, 3);
-    root = Insert(root, 4);
-    root = Insert(root, 6);
-    root = Insert(root, 19);*/
-
-    // Search in BST for a value
-    /*int Numri;
-    cout << "Caktoni numrin qe do te kerkohet: ";
-    cin >> Numri;
-    if (Search(root, Numri))
-    {
-        cout << "Numri eshte gjetur\n";
-    }
-    else
-    {
-        cout << "Numri nuk eshte gjetur\n";
-    }
-    */
+    root = Insert(root, 22);
+    root = Insert(root, 7);
+    root = Insert(root, 26);
+    root = Insert(root, 11);
+    root = Insert(root, 14);
 
     // Delete(root, 25);
 
@@ -72,6 +55,19 @@ int main()
     InOrder(root);
 
     cout << "\n\nHeight of the tree is: " << Height(root) << endl;
+
+    // Search in BST for a value
+    int data;
+    cout << "Give the node value to find:: ";
+    cin >> data;
+    if (Search(root, data))
+    {
+        cout << data << " is found in the tree.\n";
+    }
+    else
+    {
+        cout << data << " does note exists in the tree.\n";
+    }
 
     return 0;
 }
